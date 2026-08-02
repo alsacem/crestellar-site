@@ -716,13 +716,9 @@
           <span data-en>Crestellar Academy is an iPad app today — the iPhone version is on the way. Leave your email and you'll be the first to know the moment it ships.</span>
           <span data-zh>Crestellar Academy而家係iPad App — iPhone版整緊。留低email，一出你就第一時間收到通知。</span>
         </p>
-        <!--
-          Waitlist backend: FormSubmit (no signup needed).
-          1) The FIRST submission triggers a confirmation email to the address below — click it once to activate.
-          2) After activation, FormSubmit gives you a random alias endpoint (e.g. formsubmit.co/abc123...).
-             Swap it into the action below so the raw email address isn't exposed in the page source.
-        -->
-        <form class="wl-form" id="wl-form" action="https://formsubmit.co/ikaristawan@gmail.com" method="POST">
+        <!-- Waitlist backend: FormSubmit — activated 2026-08-02; the action uses the random alias
+             (delivers to the owner's inbox without exposing the address in the page source). -->
+        <form class="wl-form" id="wl-form" action="https://formsubmit.co/f463be7a82c0f4774bc3230530326c44" method="POST">
           <input type="hidden" name="_subject" value="Crestellar — iPhone waitlist signup">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_next" value="" id="wl-next">
