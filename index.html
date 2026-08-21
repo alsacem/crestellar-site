@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crestellar — HKDSE Maths self-study app · DSE數學試題王</title>
-<meta name="description" content="The all-in-one HKDSE Maths self-study app — real 名校 exam questions, timed mock exams, natively-typeset past-paper solutions, revision notes, and every subject's 5** cutoff since 2012. Free to start, no account needed. 一App搞掂DSE數學，免費開始，唔使開戶口。">
+<meta name="description" content="The all-in-one HKDSE Maths self-study app — real 名校 exam questions, timed mock exams, an interactive Visual Math Lab, revision notes, a revision timetable for all 25 subjects, and every subject's 5** cutoff since 2012. Free to start, no account needed. 一App搞掂DSE數學，免費開始，唔使開戶口。">
 <meta name="theme-color" content="#1E1B30">
 <!-- iOS Safari smart app banner -->
 <meta name="apple-itunes-app" content="app-id=6670178477">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.crestellaracademy.com/">
 <meta property="og:title" content="Crestellar — HKDSE Maths self-study app · DSE數學試題王">
-<meta property="og:description" content="Real 名校 questions, timed mock exams, 5** solutions, revision notes & cutoff data since 2012. Free to start — no account needed. 免費開始，唔使開戶口。">
+<meta property="og:description" content="Real 名校 questions, timed mock exams, an interactive Visual Math Lab, a 25-subject revision timetable, 5** solutions & cutoff data since 2012. Free to start — no account needed. 免費開始，唔使開戶口。">
 <meta property="og:image" content="https://www.crestellaracademy.com/assets/hero-home.jpg">
 <link rel="canonical" href="https://www.crestellaracademy.com/">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -136,6 +136,7 @@
   .g-slide.on{display:block;animation:gfade .45s ease}
   @keyframes gfade{from{opacity:0}to{opacity:1}}
   .g-slide img{width:100%;height:auto;display:block}
+  .g-slide video{width:100%;height:auto;display:block}
   .g-cap{padding:11px 56px;font-size:.87rem;color:var(--dim);background:rgba(255,255,255,.045);border-top:1px solid var(--line);text-align:center;min-height:64px;display:flex;align-items:center;justify-content:center}
   .g-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(20,17,31,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px;transition:background .2s}
   .g-btn:hover{background:rgba(20,17,31,.85)}
@@ -268,8 +269,8 @@
         <span data-zh>一App<span class="orangeit">搞掂</span>DSE數學</span>
       </h1>
       <p class="sub reveal in d2">
-        <span data-en>Real 名校 exam questions, timed mock exams, natively-typeset past-paper solutions, revision notes, and every subject's 5** cutoff since 2012.</span>
-        <span data-zh>名校試題、計時模擬試、歷屆試題詳解、溫習筆記、2012年起各科5**分數線。</span>
+        <span data-en>Real 名校 exam questions, timed mock exams, an interactive Visual Math Lab, revision notes, a revision timetable for all 25 subjects, and every subject's 5** cutoff since 2012.</span>
+        <span data-zh>名校試題、計時模擬試、數學動態實驗室、溫習筆記同25科溫習時間表、2012年起各科5**分數線。</span>
       </p>
       <div class="cta-row reveal in d3">
         <a href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener">
@@ -314,8 +315,8 @@
       <div class="sec-head reveal">
         <h2 class="sec-title"><span data-en>Everything inside the app</span><span data-zh>App入面嘅所有功能</span></h2>
         <p class="sec-sub">
-          <span data-en>Eight tools, one app — from first practice question to results-day cutoff check.</span>
-          <span data-zh>八大功能，一App齊晒 — 由第一條練習題操到放榜睇分數線。</span>
+          <span data-en>Ten tools, one app — from first practice question to results-day cutoff check.</span>
+          <span data-zh>十大功能，一App齊晒 — 由第一條練習題操到放榜睇分數線。</span>
         </p>
       </div>
 
@@ -371,6 +372,70 @@
             <figure class="g-slide">
               <img src="assets/g-records.png" alt="Previous quiz records list · 試後紀錄" loading="lazy" width="1280" height="960">
               <figcaption class="g-cap"><span data-en>Every attempt saved — reopen any past quiz anytime</span><span data-zh>每次紀錄自動保存 — 隨時翻睇舊卷</span></figcaption>
+            </figure>
+            <button type="button" class="g-btn prev" aria-label="Previous picture">‹</button>
+            <button type="button" class="g-btn next" aria-label="Next picture">›</button>
+          </div>
+          <div class="g-dots"></div>
+        </div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-copy">
+          <div class="kicker"><span data-en>Interactive learning · NEW</span><span data-zh>互動實驗室 · 新登場</span></div>
+          <h2><span data-en>Visual Math Lab — see the maths move</span><span data-zh>數學動態實驗室 — 拖一下，數學郁畀你睇</span></h2>
+          <p>
+            <span data-en>21 interactive topics: drag, slide and rotate real DSE figures and watch the maths respond live. Each lab covers its whole chapter's exam question types, named exactly as the revision notes name them — and every revision-note chapter links straight to its own lab. Two labs are completely free, even without an account.</span>
+            <span data-zh>21個互動課題：拖得、轉得、玩得，真DSE圖形即時有反應。每個實驗室覆蓋成章考試題型，名稱同溫習筆記完全一致，喺筆記仲可以一撳直達。兩個實驗室完全免費，唔使開戶口都玩得。</span>
+          </p>
+        </div>
+        <div class="f-shot gallery" data-gallery>
+          <div class="g-frame">
+            <figure class="g-slide on">
+              <video src="assets/vml-lab-tour.mp4" poster="assets/vml-lab-tour-poster.jpg" controls muted playsinline preload="none" width="1152" height="864"></video>
+              <figcaption class="g-cap"><span data-en>Watch the maths move — a 25-second tour</span><span data-zh>25秒睇晒 — 數學郁畀你睇</span></figcaption>
+            </figure>
+            <figure class="g-slide">
+              <img src="assets/feature-lab.png" alt="Visual Math Lab — 21 interactive topics grouped by strand · 數學動態實驗室" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>21 labs across every strand of the syllabus — two of them free for everyone</span><span data-zh>21個實驗室覆蓋成個課程 — 其中兩個人人免費</span></figcaption>
+            </figure>
+            <figure class="g-slide">
+              <img src="assets/g-lab-circle.png" alt="Circle Angle Theorems interactive — reflex centre angle · 圓的角性質互動實驗" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>Walk P across the minor arc — the centre angle turns reflex and the "2×" still holds</span><span data-zh>拖P行過劣弧 — 圓心角變優角，「兩倍」照樣成立</span></figcaption>
+            </figure>
+            <figure class="g-slide">
+              <img src="assets/g-lab-types.png" alt="A lab's numbered exam question types · 實驗室題型分頁" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>Up to 10 exam question types per lab — each on its own numbered page</span><span data-zh>一個實驗室最多10個考試題型 — 每個自成一頁</span></figcaption>
+            </figure>
+            <button type="button" class="g-btn prev" aria-label="Previous picture">‹</button>
+            <button type="button" class="g-btn next" aria-label="Next picture">›</button>
+          </div>
+          <div class="g-dots"></div>
+        </div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-copy">
+          <div class="kicker"><span data-en>Study planner · NEW</span><span data-zh>溫習規劃 · 新登場</span></div>
+          <h2><span data-en>Revision Timetable — plan all 25 subjects</span><span data-zh>溫習時間表 — 25科一齊排</span></h2>
+          <p>
+            <span data-en>A weekly planner for every HKDSE subject, not just Maths — official subject names, papers and topic lists built in. Drag sessions around your week (a clash slides to the nearest free slot), set reminders, tick sessions off — or let "Build my week" fill your free hours in one tap. A Home Screen widget shows today's plan.</span>
+            <span data-zh>唔止數學 — 25科HKDSE科目全部排得到，官方科目名、卷別、課題清單齊備。拖拉排時間表，撞時間自動搵最近空檔；可設提醒、做完打勾，仲有「一鍵排一週」自動填滿你嘅空閒時間。主畫面小工具直接睇到今日計劃。</span>
+          </p>
+        </div>
+        <div class="f-shot gallery" data-gallery>
+          <div class="g-frame">
+            <figure class="g-slide on">
+              <img src="assets/feature-timetable.png" alt="Revision Timetable — a colour-coded student week · 溫習時間表" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>A real student's week — colour-coded by subject, mock exams and tests marked out</span><span data-zh>學生嘅一週 — 逐科顏色分類，模擬試同測驗一眼認出</span></figcaption>
+            </figure>
+            <figure class="g-slide">
+              <img src="assets/g-tt-wizard.png" alt="Build my week — the auto-generate wizard · 一鍵排一週" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>"Build my week" fills your free hours around whatever is already there</span><span data-zh>「一鍵排一週」按你嘅空閒時間自動填滿現有安排以外嘅時段</span></figcaption>
+            </figure>
+            <figure class="g-slide">
+              <img src="assets/g-tt-widget.jpg" alt="Timetable widget on the iPad Home Screen · 主畫面小工具" loading="lazy" width="1280" height="960">
+              <figcaption class="g-cap"><span data-en>Today's plan on your Home Screen — it keeps itself up to date</span><span data-zh>今日計劃擺喺主畫面 — 自動更新</span></figcaption>
             </figure>
             <button type="button" class="g-btn prev" aria-label="Previous picture">‹</button>
             <button type="button" class="g-btn next" aria-label="Next picture">›</button>
@@ -650,6 +715,8 @@
               <li><span data-en><strong>Mock Exams</strong> — simulated S1–S6 papers on the real Paper 2 blueprint, for readiness and time management</span><span data-zh><strong>Mock卷</strong> — S1–S6跟足真卷二藍圖嘅模擬試，練實力又練時間分配</span></li>
               <li><span data-en><strong>Past-paper solutions</strong> — HKEAA marking schemes natively retypeset, with the Paper 2 answer key and examiners' report highlights</span><span data-zh><strong>歷屆試題詳解</strong> — HKEAA評卷參考原生重排，連卷二答案同考試報告重點</span></li>
               <li><span data-en><strong>Revision notes</strong> — complete natively-typeset notes, plus Typical Questions &amp; Skills on Max</span><span data-zh><strong>溫習筆記</strong> — 全課題原生排版筆記，Max再加題型攻略</span></li>
+              <li><span data-en><strong>Visual Math Lab</strong> — 21 interactive topics where you drag real DSE figures and watch the maths respond; two labs free for everyone</span><span data-zh><strong>數學動態實驗室</strong> — 21個互動課題，拖真DSE圖形睇數學即時反應；兩個實驗室人人免費</span></li>
+              <li><span data-en><strong>Revision Timetable</strong> — a drag-and-drop weekly planner for all 25 HKDSE subjects, with reminders, a one-tap week builder and a Home Screen widget</span><span data-zh><strong>溫習時間表</strong> — 25科HKDSE科目拖拉即排嘅週計劃，連提醒、一鍵排一週同主畫面小工具</span></li>
               <li><span data-en><strong>HKDSE Cutoff</strong> — level cutoffs for 16 subjects since 2012, free for everyone</span><span data-zh><strong>HKDSE分數線</strong> — 16科由2012年起嘅等級分數線，人人免費</span></li>
               <li><span data-en><strong>Calculator Programs</strong> — beginner-friendly guides for entering and using each program effectively</span><span data-zh><strong>計數機Program</strong> — 新手都跟到嘅輸入同應用教學</span></li>
               <li><span data-en>Full English and Traditional Chinese interface</span><span data-zh>全英文／繁體中文介面</span></li>
@@ -659,8 +726,8 @@
         <details>
           <summary><span data-en>Is it really free to start?</span><span data-zh>真係免費開始？</span></summary>
           <div class="a">
-            <span data-en>Yes. Guest mode lets you browse and try the app with no account at all, and the HKDSE Cutoff tool needs no login. A free account adds past-paper solutions, revision notes, and 80 ⚡ tokens every month for practice sessions.</span>
-            <span data-zh>係。訪客模式唔使開戶口都可以試用，分數線工具更加完全唔使login。開個免費戶口就再有歷屆詳解、溫習筆記，同每月80個⚡token做練習。</span>
+            <span data-en>Yes. Guest mode lets you browse and try the app with no account at all — including two full Visual Math Lab topics — and the HKDSE Cutoff tool needs no login. A free account adds past-paper solutions, revision notes, the Revision Timetable, and 80 ⚡ tokens every month for practice sessions.</span>
+            <span data-zh>係。訪客模式唔使開戶口都可以試用 — 連兩個數學動態實驗室都玩得晒 — 分數線工具更加完全唔使login。開個免費戶口就再有歷屆詳解、溫習筆記、溫習時間表，同每月80個⚡token做練習。</span>
           </div>
         </details>
         <details>
@@ -848,6 +915,8 @@
       dotsBox.appendChild(d); return d;
     });
     function go(k){
+      const v = slides[i].querySelector('video');
+      if (v) v.pause();
       slides[i].classList.remove('on'); dots[i].classList.remove('on');
       i = (k + slides.length) % slides.length;
       slides[i].classList.add('on'); dots[i].classList.add('on');
