@@ -72,45 +72,85 @@
   .head-actions{display:flex;align-items:center;gap:12px;margin-left:auto}
   main section[id]{scroll-margin-top:96px}
   /* big brand logo at the top of the page content */
-  .hero-logo{height:clamp(100px,15vw,160px);width:auto;display:block;margin:clamp(6px,2vw,18px) auto 30px}
+  .hero-logo{height:clamp(64px,9vw,112px);width:auto;display:block;margin:clamp(2px,1vw,8px) auto clamp(14px,2.4vw,22px)}
   .lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.06)}
   .lang-toggle button{appearance:none;border:0;background:transparent;color:var(--dim);font:600 13px/1 var(--body);padding:9px 14px;cursor:pointer}
-  .lang-toggle button.on{background:var(--accent);color:#1E1B30}
-  .store-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--text);text-decoration:none;font:600 14px/1 var(--body);padding:10px 16px;border-radius:999px;transition:background .2s}
-  .store-pill:hover{background:rgba(255,255,255,.16)}
-  .store-pill svg{width:14px;height:16px;fill:currentColor}
-  @media(max-width:560px){.store-pill span{display:none}.store-pill{padding:10px 12px}}
+  .lang-toggle button.on{background:var(--text);color:#1E1B30}
+  /* header download button: the brightest thing in the bar, always visible (the header is sticky) */
+  .get-pill{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+    background:linear-gradient(135deg,#FFB547 0%,var(--accent) 55%,#F06B12 100%);color:#1E1B30;text-decoration:none;
+    font:800 14.5px/1 var(--body);padding:11px 17px;border-radius:999px;
+    box-shadow:0 10px 26px -10px rgba(249,138,31,.9),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s,box-shadow .2s}
+  .get-pill:hover{transform:translateY(-1px);box-shadow:0 14px 32px -10px rgba(249,138,31,1),inset 0 1px 0 rgba(255,255,255,.4)}
+  .get-pill svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .get-pill::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:sweep 4.5s ease-in-out infinite}
+  @keyframes sweep{0%,64%{left:-60%}100%{left:130%}}
+  @media(max-width:560px){.get-pill .wide{display:none}.get-pill{padding:10px 14px;font-size:14px}}
+  @media(max-width:420px){.brand img{height:38px}.site-inner{gap:12px}.head-actions{gap:8px}.lang-toggle button{padding:9px 11px}}
 
   /* ---------- hero ---------- */
-  .hero{padding:clamp(36px,7vw,84px) 0 0;text-align:center}
-  .eyebrow{display:inline-block;font:600 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(249,138,31,.4);border-radius:999px;padding:9px 16px;margin-bottom:26px}
+  .hero{padding:clamp(18px,3.4vw,40px) 0 0;text-align:center}
+  .eyebrow{display:inline-block;font:600 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(249,138,31,.4);border-radius:999px;padding:9px 16px;margin-bottom:20px}
   h1{font-family:var(--en-display),var(--zh-display),var(--body);font-weight:800;font-size:clamp(2.3rem,6.4vw,4.2rem);line-height:1.08;letter-spacing:-.015em;margin:0 auto 20px;max-width:820px}
   html[data-lang="zh"] h1{font-weight:900;letter-spacing:.01em;line-height:1.18}
   h1 .tealit{color:var(--teal)}
   h1 .orangeit{color:var(--accent)}
-  .sub{max-width:680px;margin:0 auto 30px;color:var(--dim);font-size:clamp(1rem,2.2vw,1.17rem)}
-  .cta-row{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:10px}
-  .cta-row img.badge{height:56px;width:auto;transition:transform .2s}
-  .cta-row a:hover img.badge{transform:scale(1.04)}
+  .sub{max-width:700px;margin:clamp(26px,4vw,40px) auto 0;color:var(--dim);font-size:clamp(.98rem,2vw,1.12rem)}
+
+  /* ---------- hero countdown (the first thing under the title — it replaced the iPad Home picture) ---------- */
+  .cd{position:relative;max-width:880px;margin:clamp(12px,2.4vw,22px) auto 0;padding:clamp(14px,2.6vw,26px) clamp(12px,2.6vw,26px) clamp(14px,2.2vw,22px);
+    border-radius:clamp(20px,3vw,30px);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.12);box-shadow:0 44px 100px -44px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.08)}
+  .cd::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+    background:linear-gradient(120deg,rgba(249,138,31,.75),transparent 34%,transparent 66%,rgba(26,159,190,.6));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .cd-head{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:clamp(12px,2vw,18px)}
+  .cd-title{display:flex;align-items:center;gap:9px;font:600 12.5px/1.25 var(--mono);letter-spacing:.14em;color:var(--dim);text-transform:uppercase;text-align:left}
+  .cd-title b{color:var(--text)}
+  .cd-live{width:9px;height:9px;border-radius:50%;background:#FF4D3D;flex:none;animation:live 1.8s ease-out infinite}
+  @keyframes live{0%{box-shadow:0 0 0 0 rgba(255,77,61,.6)}100%{box-shadow:0 0 0 10px rgba(255,77,61,0)}}
+  .cd-pill{font:600 12.5px/1 var(--body);color:var(--accent);background:rgba(249,138,31,.10);border:1px solid rgba(249,138,31,.45);border-radius:999px;padding:8px 13px;white-space:nowrap}
+  .cd-pill b{font:600 13px/1 var(--mono);color:#FFB547}
+  .cd .ph-maths{display:none}
+  .cd.maths .ph-first{display:none}
+  .cd.maths .ph-maths{display:inline}
+  .cd-grid{display:grid;grid-template-columns:1.25fr auto 1fr auto 1fr auto 1fr;gap:clamp(4px,1vw,10px)}
+  .cd-cell{position:relative;text-align:center;border-radius:clamp(12px,1.8vw,18px);padding:clamp(12px,2.2vw,22px) 4px clamp(9px,1.6vw,14px);
+    background:linear-gradient(180deg,#2B2647 0%,#1F1C32 49.6%,#191628 50.4%,#15121F 100%);
+    border:1px solid rgba(255,255,255,.10);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 34px -22px rgba(0,0,0,.9)}
+  .cd-num{font:600 clamp(2.05rem,7.4vw,4.7rem)/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--text)}
+  .cd-cell.days .cd-num{color:var(--accent);text-shadow:0 0 30px rgba(249,138,31,.5)}
+  .cd-num.tick{animation:tick .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes tick{from{transform:translateY(-16%);opacity:.3}to{transform:none;opacity:1}}
+  .cd-unit{font:600 10.5px/1 var(--mono);letter-spacing:.24em;color:var(--faint);margin-top:clamp(8px,1.4vw,12px);text-transform:uppercase}
+  .cd-sep{align-self:center;padding-bottom:1.1em;font:600 clamp(1.4rem,4.2vw,2.6rem)/1 var(--mono);color:rgba(244,242,250,.3);animation:blink 2s steps(1) infinite}
+  @keyframes blink{50%{opacity:.2}}
+  @media(max-width:520px){.cd-grid{grid-template-columns:1.32fr 1fr 1fr 1fr;gap:7px}.cd-sep{display:none}.cd-title{font-size:11.5px;letter-spacing:.1em}.cd-pill{font-size:12px}}
+
+  /* ---------- download block: app icon + the official badge (never altered) inside a glowing ring ---------- */
+  .dl{display:flex;flex-direction:column;align-items:center;gap:12px;margin:clamp(18px,2.8vw,26px) auto 0}
+  .dl-label{display:flex;align-items:center;gap:10px;font:700 13.5px/1.2 var(--body);letter-spacing:.04em;color:var(--gold-2)}
+  .dl-label::before,.dl-label::after{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(245,209,0,.75))}
+  .dl-label::after{transform:scaleX(-1)}
+  @property --ring{syntax:"<angle>";inherits:false;initial-value:0deg}
+  .dl-box{--ring:0deg;position:relative;display:flex;align-items:center;gap:clamp(14px,2.4vw,24px);padding:14px clamp(16px,2.4vw,22px);border-radius:28px;
+    background:linear-gradient(#1F1B33,#1F1B33) padding-box,conic-gradient(from var(--ring),#F98A1F,#FFD25E,#1A9FBE,#F98A1F) border-box;
+    border:2px solid transparent;box-shadow:0 26px 70px -20px rgba(249,138,31,.6);animation:ring 6s linear infinite}
+  @keyframes ring{to{--ring:360deg}}
+  .dl-main{display:flex;align-items:center;gap:14px;border-radius:18px;text-decoration:none;transition:transform .2s}
+  .dl-main:hover{transform:translateY(-2px) scale(1.02)}
+  .dl-icon{width:62px;height:62px;border-radius:14px;display:block;flex:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1)}
+  .dl-main .badge{height:62px;width:auto;display:block}
+  .dl-qr{display:flex;align-items:center;gap:12px;padding-left:clamp(14px,2.4vw,22px);border-left:1px solid rgba(255,255,255,.14);text-align:left;color:var(--dim);font:600 13px/1.4 var(--body)}
+  .dl-qr > span{max-width:124px}
+  .dl-qr .nw{white-space:nowrap}
+  .dl-qr img{width:86px;height:86px;border-radius:10px;display:block;flex:none;background:#fff}
+  .dl-qr b{display:block;color:var(--text);font-weight:700}
+  @media(max-width:760px),(hover:none) and (pointer:coarse){.dl-qr{display:none}}
+  @media(max-width:380px){.dl-main .badge,.dl-icon{height:54px}.dl-icon{width:54px;border-radius:12px}}
   .cta-note{color:var(--faint);font-size:.92rem}
   .cta-note b{color:var(--gold-2);font-weight:600}
-  .hero-shot{margin:clamp(30px,5vw,54px) auto 0;max-width:980px;perspective:1400px}
-  .hero-shot img{width:100%;height:auto;display:block;border-radius:clamp(12px,2vw,22px);border:1px solid rgba(255,255,255,.12);box-shadow:0 50px 120px -30px rgba(0,0,0,.7);transform:rotateX(6deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-  .hero-shot:hover img{transform:rotateX(0)}
-
-  /* ---------- countdown ---------- */
-  .countdown{margin:clamp(40px,6vw,72px) 0 0}
-  .cd-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.5vw,34px) clamp(16px,3vw,38px);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
-  .cd-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-  .cd-title{font:600 13px/1 var(--mono);letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
-  .cd-title b{color:var(--text)}
-  .cd-pill{font:600 12px/1 var(--mono);color:var(--accent);border:1px solid rgba(249,138,31,.45);border-radius:999px;padding:7px 13px}
-  .cd-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .cd-cell{text-align:center;padding:6px 4px;position:relative}
-  .cd-cell + .cd-cell::before{content:"";position:absolute;left:0;top:14%;bottom:14%;width:1px;background:var(--line)}
-  .cd-num{font:600 clamp(2rem,6.5vw,3.4rem)/1.05 var(--mono);font-variant-numeric:tabular-nums;color:var(--text)}
-  .cd-cell:first-child .cd-num{color:var(--accent)}
-  .cd-unit{font:600 11px/1 var(--mono);letter-spacing:.22em;color:var(--faint);margin-top:8px;text-transform:uppercase}
 
   /* ---------- stat strip ---------- */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:clamp(28px,4vw,44px) 0 0}
@@ -230,10 +270,118 @@
   .foot-social svg{width:18px;height:18px;fill:var(--dim)}
   .foot-social a:hover svg{fill:var(--text)}
 
+  /* ---------- Exam Calculator showcase: the first section after the hero, iPhone first ---------- */
+  .calc-show{padding:clamp(52px,8vw,100px) 0 0}
+  .cs-card{position:relative;overflow:hidden;border-radius:clamp(24px,3.4vw,36px);padding:clamp(26px,4.6vw,58px) clamp(18px,4.6vw,58px) clamp(24px,3.6vw,40px);
+    background:radial-gradient(760px 460px at 88% 16%,rgba(249,138,31,.22),transparent 62%),
+               radial-gradient(620px 480px at 0% 100%,rgba(26,159,190,.18),transparent 62%),
+               linear-gradient(155deg,#2E2954 0%,#1E1B33 48%,#141120 100%);
+    border:1px solid rgba(255,255,255,.12);box-shadow:0 70px 140px -60px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.08)}
+  .cs-card::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.07) 1.2px,transparent 1.5px);background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(115deg,transparent 38%,#000 78%);mask-image:linear-gradient(115deg,transparent 38%,#000 78%)}
+  .cs-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-areas:"copy copy" "visual more";
+    column-gap:clamp(28px,4.6vw,64px);row-gap:clamp(20px,2.6vw,28px);align-items:start}
+  .cs-copy{grid-area:copy;text-align:center;max-width:820px;margin:0 auto}.cs-visual{grid-area:visual;align-self:center}.cs-more{grid-area:more;align-self:center}
+  .cs-kicker{display:inline-flex;align-items:center;gap:9px;font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#1E1B30;
+    background:linear-gradient(120deg,#FFD84A,#FFB547);border-radius:999px;padding:7px 13px 7px 7px}
+  .cs-kicker i{font-style:normal;background:#1E1B30;color:#FFD84A;border-radius:999px;padding:4px 8px;letter-spacing:.08em;font-size:10.5px}
+  .cs-h2{font-family:var(--en-display),var(--zh-display),var(--body);font-weight:800;font-size:clamp(2.05rem,5.4vw,3.6rem);line-height:1.02;letter-spacing:-.022em;margin:18px 0}
+  html[data-lang="zh"] .cs-h2{font-weight:900;letter-spacing:.01em;line-height:1.18;font-size:clamp(1.75rem,7.4vw,3.4rem)}
+  .cs-h2 em{text-wrap:balance}
+  html[data-lang="zh"] .cs-kicker{text-transform:none;letter-spacing:.1em}
+  .cs-h2 em{display:block;font-style:normal;padding-bottom:.06em;
+    background:linear-gradient(100deg,#F98A1F 0%,#FFD25E 25%,#F98A1F 50%,#FFD25E 75%,#F98A1F 100%);background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite}
+  @keyframes shine{to{background-position:-200% 0}}
+  .cs-lead{color:rgba(244,242,250,.8);font-size:clamp(1.02rem,1.9vw,1.14rem);max-width:620px;margin:0 auto}
+  .cs-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin:0;padding:0}
+  .cs-list li{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;align-items:start;color:var(--dim);font-size:.95rem;line-height:1.5}
+  .cs-list li b{display:block;color:var(--text);font-weight:700;font-size:1.03rem;margin-bottom:3px}
+  .cs-ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font:800 13px/1 var(--body);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 12px 22px -12px rgba(0,0,0,.8)}
+  .cs-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .ic-prog{background:linear-gradient(180deg,#FFD84A,#F5B800);color:#1E1B30}
+  .ic-q{background:linear-gradient(180deg,#3BC0DE,#178BAA);color:#fff}
+  .ic-keys{background:linear-gradient(180deg,#76709F,#47426C);color:#fff}
+  .ic-home{background:linear-gradient(180deg,#FFAD52,#F07A12);color:#1E1B30}
+  .cs-cta{display:flex;align-items:center;gap:16px 20px;flex-wrap:wrap;margin-top:clamp(22px,3vw,30px)}
+  .cs-cta .dl-main .badge{height:56px}
+  .cs-cta-note{color:var(--dim);font-size:.92rem;line-height:1.45}
+  .cs-cta-note b{color:var(--text)}
+  .cs-fine{color:var(--faint);font-size:.84rem;line-height:1.5;margin-top:16px}
+  /* the visual: two iPhones (a quiz with the calculator sheet, and the full-screen calculator running a program) */
+  .cs-switch{display:flex;justify-content:center;margin-bottom:clamp(12px,2vw,18px)}
+  .cs-switch .seg{display:flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.25)}
+  .cs-switch button{appearance:none;border:0;background:transparent;color:var(--dim);font:700 13.5px/1 var(--body);padding:10px 18px;cursor:pointer;display:flex;align-items:center;gap:7px}
+  .cs-switch button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+  .cs-switch button.on{background:var(--text);color:#1E1B30}
+  .cs-stage{position:relative;width:100%;max-width:520px;margin:0 auto;aspect-ratio:10/11.4}
+  .cs-glow{position:absolute;inset:6% 2% 2%;border-radius:50%;pointer-events:none;
+    background:radial-gradient(closest-side,rgba(249,138,31,.45),rgba(249,138,31,.1) 62%,transparent);filter:blur(26px)}
+  .phone{position:absolute;width:50%;padding:2.4%;border-radius:15% / 7%;
+    background:linear-gradient(155deg,#6E6893 0%,#2A2640 24%,#15131F 58%,#3E3958 100%);
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.24),inset 0 0 0 5px #0A0911,0 46px 80px -28px rgba(0,0,0,.92)}
+  .phone img{display:block;width:100%;height:auto;border-radius:12.6% / 5.8%}
+  .phone.back{left:1%;top:8%;z-index:1;transform:rotate(-7deg);animation:floatB 8s ease-in-out infinite}
+  .phone.front{left:48%;top:2%;z-index:2;transform:rotate(5deg);animation:floatF 7s ease-in-out infinite}
+  @keyframes floatF{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-10px)}}
+  @keyframes floatB{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-7deg) translateY(8px)}}
+  .cs-chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:14px;white-space:nowrap;
+    background:rgba(18,15,28,.84);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 20px 40px -18px rgba(0,0,0,.9);font:700 13px/1.25 var(--body);color:var(--text);animation:bob 6s ease-in-out infinite}
+  .cs-chip .k{font:800 10.5px/1 var(--body);background:linear-gradient(180deg,#FFD84A,#F5B800);color:#1E1B30;border-radius:6px;padding:4px 6px}
+  .cs-chip .m{font:600 12.5px/1.2 var(--mono)}
+  .cs-chip .ok{color:#3DDC97}
+  .cs-chip .tdot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(26,159,190,.28);flex:none}
+  .cs-chip.c1{top:5%;right:-2%}
+  .cs-chip.c2{top:50%;right:-4%;animation-delay:-2s}
+  .cs-chip.c3{top:70%;left:-3%;animation-delay:-4s}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .cs-ipad{display:none}
+  .cs-visual[data-device="ipad"] .cs-stage{display:none}
+  .cs-visual[data-device="ipad"] .cs-ipad{display:block}
+  /* the program ticker */
+  .cs-ticker{position:relative;margin-top:clamp(28px,4vw,42px);padding-top:clamp(20px,3vw,26px);border-top:1px solid rgba(255,255,255,.10)}
+  .cs-tk-label{font:600 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+  .cs-tk-label b{color:#FFD84A;font-weight:600}
+  html[data-lang="zh"] .cs-tk-label{letter-spacing:.06em}
+  .cs-tk-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .cs-tk-track{display:flex;width:max-content;animation:marquee 70s linear infinite}
+  .cs-tk-set{display:flex;flex:none}
+  .cs-tk-view:hover .cs-tk-track{animation-play-state:paused}
+  .tk{display:inline-flex;align-items:center;gap:9px;margin-right:10px;padding:10px 15px;border-radius:999px;white-space:nowrap;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font:600 14px/1 var(--body);color:var(--text)}
+  .tk::before{content:"";width:7px;height:7px;border-radius:50%;background:#FFD84A;flex:none}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+  @media(max-width:900px){
+    .cs-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "visual" "more"}
+    .cs-stage{max-width:440px}
+    .cs-chip.c1{right:0}.cs-chip.c2{right:0}.cs-chip.c3{left:0}
+  }
+  @media(max-width:480px){.cs-chip{font-size:11.5px;padding:7px 9px;gap:6px}.cs-chip .m{font-size:11px}.cs-chip.c2{display:none}}
+
+  /* ---------- floating download bar (phones only), shown once the hero's button has scrolled away ---------- */
+  .dl-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:none;align-items:center;gap:12px;padding:10px 10px 10px 12px;
+    border-radius:20px;text-decoration:none;color:var(--text);background:rgba(28,25,44,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 50px -16px rgba(0,0,0,.85),0 0 0 1px rgba(249,138,31,.18);
+    transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .dl-bar.show{transform:none}
+  .dl-bar img{width:42px;height:42px;border-radius:10px;flex:none}
+  .dl-bar-t{flex:1;min-width:0;font-size:.82rem;line-height:1.3;color:var(--dim)}
+  .dl-bar-t b{display:block;color:var(--text);font-size:.95rem}
+  .dl-bar-btn{flex:none;background:linear-gradient(135deg,#FFB547,var(--accent) 60%,#F06B12);color:#1E1B30;font:800 15px/1 var(--body);padding:11px 18px;border-radius:999px;box-shadow:0 8px 20px -8px rgba(249,138,31,.9)}
+  @media(max-width:760px){.dl-bar{display:flex}footer{padding-bottom:104px}}
+
   /* ---------- reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-shot img{transform:none}}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .get-pill::after,.dl-box,.cd-sep,.cd-live,.cd-num.tick,.cs-h2 em,.phone,.cs-chip,.cs-tk-track{animation:none}
+    .phone.back{transform:rotate(-7deg)}.phone.front{transform:rotate(5deg)}
+    .cs-tk-view{overflow-x:auto}
+  }
   .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 </style>
 </head>
@@ -253,9 +401,9 @@
         <button type="button" id="btn-en">EN</button>
         <button type="button" id="btn-zh">中</button>
       </div>
-      <a class="store-pill" href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener">
-        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-        <span data-en>App Store</span><span data-zh>App Store</span>
+      <a class="get-pill" href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11.5"/><path d="M6.8 10l5.2 5.2 5.2-5.2"/><path d="M4.5 20.5h15"/></svg>
+        <span data-en>Download<span class="wide"> free</span></span><span data-zh><span class="wide">免費</span>下載</span>
       </a>
     </div>
   </div>
@@ -272,36 +420,126 @@
         <span data-en>The <span class="tealit">all-in-one</span> DSE Maths self-study app</span>
         <span data-zh>一App<span class="orangeit">搞掂</span>DSE數學</span>
       </h1>
-      <p class="sub reveal in d2">
-        <span data-en><b class="newpill">Now on iPhone</b> Real 名校 exam questions, timed mock exams, a daily plan with one free quiz a day, an interactive Visual Math Lab, revision notes, a revision timetable for all 25 subjects, a JUPAS calculator for 373 programmes, an exam calculator that works like the real thing, and every subject's 5** cutoff since 2012 — on your iPhone and your iPad, one account.</span>
-        <span data-zh><b class="newpill">iPhone版新登場</b> 名校試題、計時模擬試、每日一份免費測驗嘅每日計劃、數學動態實驗室、溫習筆記、25科溫習時間表、373個課程嘅聯招計分器、按鍵同顯示都同真機一樣嘅考試計算機，同2012年起各科5**分數線 — iPhone同iPad都用得，一個帳戶。</span>
-      </p>
-      <div class="cta-row reveal in d3">
-        <a href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener">
-          <img class="badge" src="assets/app-store-badge.png" alt="Download on the App Store">
-        </a>
+      <!-- live countdown to the first written paper (it replaced the iPad Home picture, 2026-11-14) -->
+      <div class="cd reveal in d2" id="countdown">
+        <div class="cd-head">
+          <div class="cd-title">
+            <span class="cd-live" aria-hidden="true"></span>
+            <span data-en><b>HKDSE <span class="cd-year">2027</span></b> · <span class="ph-first">first paper · Tue 6 Apr</span><span class="ph-maths">Maths paper · Mon 12 Apr</span></span>
+            <span data-zh><b>HKDSE <span class="cd-year">2027</span></b> · <span class="ph-first">開考倒數 · 4月6日（二）</span><span class="ph-maths">數學科倒數 · 4月12日（一）</span></span>
+          </div>
+          <div class="cd-pill ph-first"><span data-en>Maths paper in <b class="cd-maths">—</b> days</span><span data-zh>數學科仲有 <b class="cd-maths">—</b> 日</span></div>
+        </div>
+        <div class="cd-grid" role="timer" aria-label="Countdown to the HKDSE 2027 examination">
+          <div class="cd-cell days"><div class="cd-num" id="cd-d">—</div><div class="cd-unit"><span data-en>Days</span><span data-zh>日</span></div></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-cell"><div class="cd-num" id="cd-h">—</div><div class="cd-unit"><span data-en>Hrs</span><span data-zh>時</span></div></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-cell"><div class="cd-num" id="cd-m">—</div><div class="cd-unit"><span data-en>Min</span><span data-zh>分</span></div></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-cell"><div class="cd-num" id="cd-s">—</div><div class="cd-unit"><span data-en>Sec</span><span data-zh>秒</span></div></div>
+        </div>
+      </div>
+
+      <!-- download: the app icon beside the official badge (never altered), inside a glowing ring; a QR code for desktop visitors -->
+      <div class="dl reveal in d3" id="hero-dl">
+        <div class="dl-label"><span data-en>Free download · iPhone &amp; iPad</span><span data-zh>免費下載 · iPhone同iPad都用得</span></div>
+        <div class="dl-box">
+          <a class="dl-main" href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener">
+            <img class="dl-icon" src="assets/app-icon.png" alt="" width="62" height="62">
+            <img class="badge" src="assets/app-store-badge.png" alt="Download on the App Store" width="179" height="62">
+          </a>
+          <div class="dl-qr">
+            <img src="assets/qr-app-store.svg" alt="QR code: Crestellar Academy on the App Store" width="86" height="86">
+            <span><b><span data-en>On a computer?</span><span data-zh>用緊電腦？</span></b><span data-en>Scan with your iPhone camera.</span><span data-zh>用iPhone相機<span class="nw">掃一掃。</span></span></span>
+          </div>
+        </div>
         <div class="cta-note">
           <span data-en>Free to start · no account needed · <b>80 free tokens</b> every month</span>
           <span data-zh>免費開始 · 唔使開戶口 · 每月<b>80個免費token</b></span>
         </div>
       </div>
-      <div class="hero-shot reveal in d3">
-        <img src="assets/hero-home.jpg" alt="Crestellar home screen — live DSE countdown, practice streak and grade trend · 主頁：DSE倒數、練習連勝、成績趨勢" width="1600" height="1200" loading="eager">
-      </div>
+
+      <p class="sub reveal in d3">
+        <span data-en><b class="newpill">Now on iPhone</b> Real 名校 exam questions, timed mock exams, a daily plan with one free quiz a day, an interactive Visual Math Lab, revision notes, a revision timetable for all 25 subjects, a JUPAS calculator for 373 programmes, an exam calculator that works like the real thing, and every subject's 5** cutoff since 2012 — on your iPhone and your iPad, one account.</span>
+        <span data-zh><b class="newpill">iPhone版新登場</b> 名校試題、計時模擬試、每日一份免費測驗嘅每日計劃、數學動態實驗室、溫習筆記、25科溫習時間表、373個課程嘅聯招計分器、按鍵同顯示都同真機一樣嘅考試計算機，同2012年起各科5**分數線 — iPhone同iPad都用得，一個帳戶。</span>
+      </p>
     </section>
 
-    <!-- ============ COUNTDOWN ============ -->
-    <section class="countdown reveal" id="countdown" hidden>
-      <div class="cd-card">
-        <div class="cd-head">
-          <div class="cd-title"><span data-en><b>HKDSE <span id="cd-year">2027</span></b> · FIRST PAPER</span><span data-zh><b>HKDSE <span>2027</span></b> · 開考倒數</span></div>
-          <div class="cd-pill"><span data-en>Practice every day</span><span data-zh>每日操一操</span></div>
+    <!-- ============ EXAM CALCULATOR — the first section, iPhone first (2026-11-14) ============ -->
+    <section class="calc-show" id="calculator">
+      <div class="cs-card reveal">
+        <div class="cs-grid">
+          <div class="cs-copy">
+            <div class="cs-kicker"><i><span data-en>NEW</span><span data-zh>新</span></i><span data-en>Exam Calculator on iPhone</span><span data-zh>iPhone考試計算機</span></div>
+            <h2 class="cs-h2"><span data-en>Forgot your calculator? <em>It's on your iPhone.</em></span><span data-zh>唔記得帶計數機？<em>iPhone入面就有一部</em></span></h2>
+            <p class="cs-lead">
+              <span data-en>Left it at home on the way to school or a tutorial lesson? Open Crestellar on your iPhone: the Exam Calculator has the same keys and two-line display as the real one, with our calculator programs ready to run.</span>
+              <span data-zh>返學、返補習先發覺計數機留咗喺屋企？打開iPhone上嘅Crestellar：考試計算機嘅按鍵同兩行顯示都同真機一樣，仲裝好我哋嘅計數機程式，即撳即用。</span>
+            </p>
+          </div>
+
+          <div class="cs-visual" data-device="iphone">
+            <div class="cs-switch">
+              <div class="seg" role="group" aria-label="Device">
+                <button type="button" class="on" data-dev="iphone" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>iPhone</button>
+                <button type="button" data-dev="ipad" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>iPad</button>
+              </div>
+            </div>
+            <div class="cs-stage">
+              <div class="cs-glow" aria-hidden="true"></div>
+              <div class="phone back">
+                <img data-en src="assets/calc-iphone-quiz-en.jpg" alt="An MC question on iPhone with the Exam Calculator open below it: sin(30)÷tan(40) = 0.595876796" width="600" height="1304" loading="lazy">
+                <img data-zh src="assets/calc-iphone-quiz-zh.jpg" alt="iPhone上嘅MC題目，下面打開咗考試計算機：sin(30)÷tan(40) = 0.595876796" width="600" height="1304" loading="lazy">
+              </div>
+              <div class="phone front">
+                <img data-en src="assets/calc-iphone-run-en.jpg" alt="The Exam Calculator full screen on iPhone: Calculator 1 holds four programs — 4 Centres, Circle, Quadratic and Locus" width="600" height="1304" loading="lazy">
+                <img data-zh src="assets/calc-iphone-run-zh.jpg" alt="iPhone全螢幕考試計算機：計算機1裝住四個程式" width="600" height="1304" loading="lazy">
+              </div>
+              <div class="cs-chip c1"><span class="k">PRGM</span><span data-en>18 exclusive programs</span><span data-zh>18個獨家程式</span></div>
+              <div class="cs-chip c2"><span data-en>Keys &amp; display like the real one</span><span data-zh>按鍵同顯示同真機一樣</span></div>
+              <div class="cs-chip c3"><span class="tdot"></span><span data-en>Opens right below the question</span><span data-zh>喺題目下面打開</span></div>
+            </div>
+            <div class="cs-ipad gallery" data-gallery>
+              <div class="g-frame">
+                <figure class="g-slide on">
+                  <img src="assets/feature-calc.png" alt="The Exam Calculator docked beside a timed MC question · 考試計算機貼住計時MC題目" loading="lazy" width="1280" height="960">
+                  <figcaption class="g-cap"><span data-en>On iPad it docks beside the question — the question stays in view</span><span data-zh>iPad上貼住題目 — 題目照睇到</span></figcaption>
+                </figure>
+                <figure class="g-slide">
+                  <img src="assets/g-calc-program.png" alt="Calculator 1 running Quadratic Equation beside a Long Question · 計算機1喺長題目旁邊行二次方程" loading="lazy" width="1280" height="960">
+                  <figcaption class="g-cap"><span data-en>Calculator 1 runs Quadratic Equation beside a Long Question</span><span data-zh>計算機1喺長題目旁邊行二次方程Program</span></figcaption>
+                </figure>
+                <button type="button" class="g-btn prev" aria-label="Previous picture">‹</button>
+                <button type="button" class="g-btn next" aria-label="Next picture">›</button>
+              </div>
+              <div class="g-dots"></div>
+            </div>
+          </div>
+
+          <div class="cs-more">
+            <ul class="cs-list">
+              <li><span class="cs-ic ic-prog" aria-hidden="true">PRGM</span><div><b><span data-en>Our exclusive programs, ready to run</span><span data-zh>獨家程式，即撳即用</span></b><span data-en>18 calculator programs written for HKDSE Maths — equations, circles, loci, sequences, straight lines and more. You get two calculators that hold four programs each; swap any in from the program line or in Setting.</span><span data-zh>18個為DSE數學而寫嘅計數機程式 — 方程、圓、軌跡、數列、直線等等。你有兩部計算機，每部裝4個，喺程式列或者設定隨時換。</span></div></li>
+              <li><span class="cs-ic ic-q" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.2"/><path d="M8.6 8h6.8M8.6 12h6.8M8.6 16h3.6"/></svg></span><div><b><span data-en>Right beside the question</span><span data-zh>就喺題目旁邊</span></b><span data-en>Tap the calculator button in a quiz, a mock exam, a Long Question or a saved question. On iPhone it rises from the bottom and the question stays in view; on iPad it docks beside the question card.</span><span data-zh>做測驗、Mock卷、長題目或者收藏題目時撳計算機掣：iPhone上由下面升上嚟，題目照睇到；iPad上就貼住題目卡。</span></div></li>
+              <li><span class="cs-ic ic-keys" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.4"/><path d="M8.5 6.6h7M8.6 11h.01M12 11h.01M15.4 11h.01M8.6 14.5h.01M12 14.5h.01M15.4 14.5h.01M8.6 18h.01M12 18h.01M15.4 18h.01"/></svg></span><div><b><span data-en>Works like the real thing</span><span data-zh>用法同真機一樣</span></b><span data-en>The same keys and two-line display, all six modes — COMP, CMPLX, BASE, SD, REG and PRGM — the 23 built-in formulas and the 40 constants.</span><span data-zh>同樣嘅按鍵同兩行顯示，六個模式 — COMP、CMPLX、BASE、SD、REG同PRGM — 23條內置公式同40個常數。</span></div></li>
+              <li><span class="cs-ic ic-home" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.4L12 4.6l8 6.8"/><path d="M6.6 9.8v9.7h10.8V9.8"/><path d="M10.2 19.5v-5h3.6v5"/></svg></span><div><b><span data-en>One tap from Home</span><span data-zh>主頁一撳就開</span></b><span data-en>Tap the yellow Exam Calculator tile on Home for a full-screen calculator, and try any program on the demo calculator on its Program page.</span><span data-zh>喺主頁撳黃色「考試計算機」就全螢幕打開；每個計數機Program頁面仲有示範計算機，專門行嗰個程式俾你試。</span></div></li>
+            </ul>
+            <div class="cs-cta">
+              <a class="dl-main" href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener"><img class="badge" src="assets/app-store-badge.png" alt="Download on the App Store" width="179" height="62"></a>
+              <div class="cs-cta-note"><span data-en><b>Free download</b> · sign in free to use the calculator</span><span data-zh><b>免費下載</b> · 免費登入就用得計算機</span></div>
+            </div>
+            <p class="cs-fine">
+              <span data-en>Needs a free account — a guest can open it, and every key asks them to sign in. Every signed-in student can run all 18 programs; reading a program’s code follows your plan. For learning and practice: in the HKDSE examination you still need your own HKEAA-approved calculator.</span>
+              <span data-zh>要開個免費戶口 — 訪客都打得開，但撳任何一個鍵都會叫你登入。登入咗嘅學生18個程式全部行得；睇程式碼就跟你嘅計劃。只供學習同練習：HKDSE考試入面，你仍然要用自己嘅考評局認可計數機。</span>
+            </p>
+          </div>
         </div>
-        <div class="cd-grid" role="timer" aria-label="Countdown to HKDSE 2027 first paper">
-          <div class="cd-cell"><div class="cd-num" id="cd-d">—</div><div class="cd-unit"><span data-en>Days</span><span data-zh>日</span></div></div>
-          <div class="cd-cell"><div class="cd-num" id="cd-h">—</div><div class="cd-unit"><span data-en>Hrs</span><span data-zh>時</span></div></div>
-          <div class="cd-cell"><div class="cd-num" id="cd-m">—</div><div class="cd-unit"><span data-en>Min</span><span data-zh>分</span></div></div>
-          <div class="cd-cell"><div class="cd-num" id="cd-s">—</div><div class="cd-unit"><span data-en>Sec</span><span data-zh>秒</span></div></div>
+
+        <div class="cs-ticker">
+          <div class="cs-tk-label"><span data-en><b>18</b> exclusive programs, including</span><span data-zh><b>18</b>個獨家程式，包括</span></div>
+          <div class="cs-tk-view">
+            <div class="cs-tk-track"><div class="cs-tk-set"><span class="tk"><span data-en>Simultaneous Linear Equations</span><span data-zh>聯立方程（直線）</span></span><span class="tk"><span data-en>4 Centres and 3 Points Circle</span><span data-zh>四心及通過三點的圓</span></span><span class="tk"><span data-en>Equation of Circle</span><span data-zh>圓形方程</span></span><span class="tk"><span data-en>Quadratic Equation</span><span data-zh>二次方程</span></span><span class="tk"><span data-en>Equation of Locus</span><span data-zh>軌跡方程</span></span><span class="tk"><span data-en>Arithmetic Sequences</span><span data-zh>等差數列</span></span><span class="tk"><span data-en>Geometric Sequences</span><span data-zh>等比數列</span></span><span class="tk"><span data-en>Long Division</span><span data-zh>長除法</span></span><span class="tk"><span data-en>Equation of Straight Lines</span><span data-zh>直線方程</span></span><span class="tk"><span data-en>Cubic Equation</span><span data-zh>三次方程</span></span><span class="tk"><span data-en>Trigonometric Equation</span><span data-zh>三角方程</span></span><span class="tk"><span data-en>Arithmetic &amp; Geometric Sequence</span><span data-zh>等差等比數列</span></span><span class="tk"><span data-en>Partial Variation</span><span data-zh>部分變</span></span><span class="tk"><span data-en>Simplification of Square Roots</span><span data-zh>平方根化簡</span></span><span class="tk"><span data-en>Sine/Cosine Law and Area of △</span><span data-zh>正弦/餘弦公式及三角形面積</span></span><span class="tk"><span data-en>Area of N Points</span><span data-zh>N 點多邊形面積</span></span><span class="tk"><span data-en>Reflection and Distance between Point and Line</span><span data-zh>點與直線的距離及反射</span></span></div><div class="cs-tk-set" aria-hidden="true"><span class="tk"><span data-en>Simultaneous Linear Equations</span><span data-zh>聯立方程（直線）</span></span><span class="tk"><span data-en>4 Centres and 3 Points Circle</span><span data-zh>四心及通過三點的圓</span></span><span class="tk"><span data-en>Equation of Circle</span><span data-zh>圓形方程</span></span><span class="tk"><span data-en>Quadratic Equation</span><span data-zh>二次方程</span></span><span class="tk"><span data-en>Equation of Locus</span><span data-zh>軌跡方程</span></span><span class="tk"><span data-en>Arithmetic Sequences</span><span data-zh>等差數列</span></span><span class="tk"><span data-en>Geometric Sequences</span><span data-zh>等比數列</span></span><span class="tk"><span data-en>Long Division</span><span data-zh>長除法</span></span><span class="tk"><span data-en>Equation of Straight Lines</span><span data-zh>直線方程</span></span><span class="tk"><span data-en>Cubic Equation</span><span data-zh>三次方程</span></span><span class="tk"><span data-en>Trigonometric Equation</span><span data-zh>三角方程</span></span><span class="tk"><span data-en>Arithmetic &amp; Geometric Sequence</span><span data-zh>等差等比數列</span></span><span class="tk"><span data-en>Partial Variation</span><span data-zh>部分變</span></span><span class="tk"><span data-en>Simplification of Square Roots</span><span data-zh>平方根化簡</span></span><span class="tk"><span data-en>Sine/Cosine Law and Area of △</span><span data-zh>正弦/餘弦公式及三角形面積</span></span><span class="tk"><span data-en>Area of N Points</span><span data-zh>N 點多邊形面積</span></span><span class="tk"><span data-en>Reflection and Distance between Point and Line</span><span data-zh>點與直線的距離及反射</span></span></div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -355,39 +593,9 @@
       <div class="sec-head reveal">
         <h2 class="sec-title"><span data-en>Everything inside the app</span><span data-zh>App入面嘅所有功能</span></h2>
         <p class="sec-sub">
-          <span data-en>Thirteen tools, one app — from your first practice question to your JUPAS choices.</span>
-          <span data-zh>十三大功能，一App齊晒 — 由第一條練習題操到排好聯招志願。</span>
+          <span data-en>Twelve more tools, one app — from your first practice question to your JUPAS choices.</span>
+          <span data-zh>仲有十二大功能，一App齊晒 — 由第一條練習題操到排好聯招志願。</span>
         </p>
-      </div>
-
-      <div class="feature reveal">
-        <div class="f-copy">
-          <div class="kicker"><span data-en>Calculator · NEW</span><span data-zh>計算機 · 新登場</span></div>
-          <h2><span data-en>Exam Calculator — works like the real thing</span><span data-zh>考試計算機 — 按鍵同顯示都同真機一樣</span></h2>
-          <p>
-            <span data-en>A calculator laid out like the real thing: the same keys and two-line display, all six modes — COMP, CMPLX, BASE, SD, REG and PRGM — the 23 built-in formulas and the 40 constants. Open it beside the question in quizzes, mock exams, Long Questions and saved questions: on iPad it docks beside the question card, on the side away from your writing hand, and never covers the question; on iPhone it rises as a sheet that keeps the question in view. Or tap the yellow Exam Calculator tile on Home for a full-screen calculator. You get two calculators, each holding four of our 18 calculator programs — swap any of them in from the program line or in Setting — and every Program page has a demo calculator that runs just that program.</span>
-            <span data-zh>排版同真機一樣嘅計算機：同樣嘅按鍵同兩行顯示，六個模式 — COMP、CMPLX、BASE、SD、REG同PRGM — 23條內置公式同40個常數齊備。做測驗、Mock卷、長題目同收藏題目時都可以喺題目旁邊打開：iPad上會貼住題目卡，擺喺你慣用手嘅另一邊，唔會遮住題目；iPhone上就由下面升上嚟，題目照睇到。喺主頁撳黃色「考試計算機」就可以全螢幕用。你有兩部計算機，每部裝住4個我哋嘅計數機Program，18個隨你喺程式列或者設定入面換；每個計數機Program頁面仲有示範計算機，專門行嗰個程式俾你試。</span>
-          </p>
-          <p style="margin-top:12px">
-            <span data-en><em>Needs a free account — a guest can open it, and every key asks them to sign in. Every signed-in student can run all 18 programs; reading a program’s code follows your plan. On iPhone and iPad.</em></span>
-            <span data-zh><em>要開個免費戶口 — 訪客都打得開，但撳任何一個鍵都會叫你登入。登入咗嘅學生18個程式全部行得；睇程式碼就跟你嘅計劃。iPhone同iPad都用得。</em></span>
-          </p>
-        </div>
-        <div class="f-shot gallery" data-gallery>
-          <div class="g-frame">
-            <figure class="g-slide on">
-              <img src="assets/feature-calc.png" alt="The Exam Calculator docked beside a timed MC question · 考試計算機貼住計時MC題目" loading="lazy" width="1280" height="960">
-              <figcaption class="g-cap"><span data-en>Beside a timed MC question — the question stays in view</span><span data-zh>喺計時MC題目旁邊 — 題目照睇到</span></figcaption>
-            </figure>
-            <figure class="g-slide">
-              <img src="assets/g-calc-program.png" alt="Calculator 1 running Quadratic Equation beside a Long Question · 計算機1喺長題目旁邊行二次方程" loading="lazy" width="1280" height="960">
-              <figcaption class="g-cap"><span data-en>Calculator 1 runs Quadratic Equation beside a Long Question</span><span data-zh>計算機1喺長題目旁邊行二次方程Program</span></figcaption>
-            </figure>
-            <button type="button" class="g-btn prev" aria-label="Previous picture">‹</button>
-            <button type="button" class="g-btn next" aria-label="Next picture">›</button>
-          </div>
-          <div class="g-dots"></div>
-        </div>
       </div>
 
       <div class="feature flip reveal">
@@ -1046,6 +1254,13 @@
 
 </div>
 
+<!-- floating download bar: phones only, once the hero's download button has scrolled away -->
+<a class="dl-bar" id="dl-bar" href="https://apps.apple.com/hk/app/crestellar-academy/id6670178477" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+  <img src="assets/app-icon.png" alt="" width="42" height="42">
+  <span class="dl-bar-t"><b>Crestellar Academy</b><span data-en>DSE Maths · free on the App Store</span><span data-zh>DSE數學 · App Store免費下載</span></span>
+  <span class="dl-bar-btn"><span data-en>Get</span><span data-zh>下載</span></span>
+</a>
+
 <script>
   // ---------- language ----------
   const htmlEl = document.documentElement;
@@ -1065,23 +1280,62 @@
         : saved || ((navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en'));
 
   // ---------- countdown ----------
-  // The published 2027 timetable (HKEAA Examination Circular No. 8, 2025/26): the written
-  // examinations start Tue 6 Apr 2027. Matches the app's DSEDates.fallback and /AppConfig/DSEDates.
-  // For a new exam year, update BOTH this constant and the visible year in #cd-year.
+  // The published 2027 timetable (HKEAA Examination Circular No. 8, 2025/26): the written examinations
+  // start Tue 6 Apr 2027 and Mathematics (Compulsory Part) is Mon 12 Apr 2027 — the app's DSEDates
+  // (bundled fallback and /AppConfig/DSEDates). As on the app's Home banner, the big DAYS number is whole
+  // days to that paper day's midnight in Hong Kong, and the Maths pill counts calendar days in Hong Kong.
+  // Once the first paper has started, the countdown moves on to the Maths paper; after that it is hidden.
+  // For a new exam year, update BOTH constants and the visible dates inside #countdown.
   const DSE_FIRST_PAPER = new Date('2027-04-06T00:00:00+08:00');
+  const DSE_MATHS_PAPER = new Date('2027-04-12T00:00:00+08:00');
   const cd = document.getElementById('countdown');
+  const cdNums = ['cd-d', 'cd-h', 'cd-m', 'cd-s'].map(id => document.getElementById(id));
   const pad = n => String(n).padStart(2, '0');
+  const hkParts = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Hong_Kong', year: 'numeric', month: 'numeric', day: 'numeric' });
+  function hkDayIndex(t){ // whole days since 1 Jan 1970, counted on the Hong Kong calendar
+    const p = Object.fromEntries(hkParts.formatToParts(t).map(x => [x.type, x.value]));
+    return Date.UTC(+p.year, +p.month - 1, +p.day) / 86400000;
+  }
   function tick(){
-    const diff = DSE_FIRST_PAPER - Date.now();
+    const now = Date.now();
+    const target = now < DSE_FIRST_PAPER ? DSE_FIRST_PAPER : DSE_MATHS_PAPER;
+    const diff = target - now;
     if (diff <= 0) { cd.hidden = true; return; }
-    cd.hidden = false;
+    cd.classList.toggle('maths', target === DSE_MATHS_PAPER);
     const s = Math.floor(diff / 1000);
-    document.getElementById('cd-d').textContent = Math.floor(s / 86400);
-    document.getElementById('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
-    document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
-    document.getElementById('cd-s').textContent = pad(s % 60);
+    [String(Math.floor(s / 86400)), pad(Math.floor(s % 86400 / 3600)), pad(Math.floor(s % 3600 / 60)), pad(s % 60)].forEach((v, k) => {
+      const el = cdNums[k];
+      if (el.textContent === v) return;
+      el.textContent = v;
+      el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
+    });
+    const mathsDays = String(hkDayIndex(DSE_MATHS_PAPER) - hkDayIndex(now));
+    cd.querySelectorAll('.cd-maths').forEach(b => { b.textContent = mathsDays; });
   }
   tick(); setInterval(tick, 1000);
+
+  // ---------- Exam Calculator: iPhone / iPad switch ----------
+  const csVisual = document.querySelector('.cs-visual');
+  if (csVisual) csVisual.querySelectorAll('[data-dev]').forEach(b => b.addEventListener('click', () => {
+    csVisual.dataset.device = b.dataset.dev;
+    csVisual.querySelectorAll('[data-dev]').forEach(x => {
+      const on = x === b;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }));
+
+  // ---------- floating download bar (phones): shown once the hero's download button has scrolled away ----------
+  const dlBar = document.getElementById('dl-bar');
+  const heroDl = document.getElementById('hero-dl');
+  if (dlBar && heroDl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      const show = !e.isIntersecting && e.boundingClientRect.top < 0;
+      dlBar.classList.toggle('show', show);
+      dlBar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      dlBar.tabIndex = show ? 0 : -1;
+    }).observe(heroDl);
+  }
 
   // ---------- sticky header ----------
   const topbar = document.getElementById('topbar');
