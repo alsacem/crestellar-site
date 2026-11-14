@@ -144,7 +144,7 @@
   .dl-main .badge{height:62px;width:auto;display:block}
   .dl-qr{display:flex;align-items:center;gap:12px;padding-left:clamp(14px,2.4vw,22px);border-left:1px solid rgba(255,255,255,.14);text-align:left;color:var(--dim);font:600 13px/1.4 var(--body)}
   .dl-qr > span{max-width:124px}
-  .dl-qr .nw{white-space:nowrap}
+  .nw{white-space:nowrap}
   .dl-qr img{width:86px;height:86px;border-radius:10px;display:block;flex:none;background:#fff}
   .dl-qr b{display:block;color:var(--text);font-weight:700}
   @media(max-width:760px),(hover:none) and (pointer:coarse){.dl-qr{display:none}}
@@ -199,6 +199,27 @@
   .p-price{font-family:var(--en-display),var(--body);font-weight:800;font-size:1.65rem}
   .p-price .per{font-size:.85rem;color:var(--dim);font-weight:600;white-space:nowrap}
   .p-tokens{font:600 .92rem var(--mono);color:var(--gold-2)}
+  .p-tag{font-size:.86rem;line-height:1.35;color:var(--text);opacity:.82;margin-top:-3px;min-height:2.7em}
+  @media(max-width:429px){.p-tag{min-height:0}}
+  /* 4.7: earn tokens with short ads; every paid plan ad-free */
+  .new47{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:14px;margin:0 0 30px}
+  .n47{position:relative;overflow:hidden;border-radius:22px;padding:22px 22px 20px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025))}
+  .n47.earn{border-color:rgba(249,138,31,.38);background:radial-gradient(460px 240px at 100% 0%,rgba(249,138,31,.24),transparent 70%),linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+  .n47.adfree{background:radial-gradient(420px 240px at 0% 100%,rgba(26,159,190,.20),transparent 70%),linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+  .n47-kicker{display:inline-block;font:700 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#1E1B30;background:linear-gradient(120deg,#FFD84A,#FFB547);border-radius:999px;padding:6px 10px}
+  .n47.adfree .n47-kicker{background:rgba(26,159,190,.22);color:#7FD9EE}
+  html[data-lang="zh"] .n47-kicker{letter-spacing:.08em}
+  .n47 h3{font-family:var(--en-display),var(--zh-display),var(--body);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.65rem);line-height:1.2;margin:12px 0 8px}
+  html[data-lang="zh"] .n47 h3{font-weight:900;letter-spacing:.01em}
+  .n47 p{color:var(--dim);font-size:.95rem;line-height:1.55}
+  .n47-big{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:2px 0 10px}
+  .n47-big b{font:600 clamp(2.3rem,6vw,3.2rem)/1 var(--mono);color:var(--accent);text-shadow:0 0 26px rgba(249,138,31,.45);white-space:nowrap}
+  .n47-big span{color:var(--text);font-weight:700}
+  .n47-noad{display:flex;align-items:center;gap:12px;margin:2px 0 10px}
+  .n47-noad svg{width:46px;height:46px;flex:none;fill:none;stroke:#7FD9EE;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .n47-noad span{display:flex;flex-wrap:wrap;gap:6px}
+  .n47-noad i{font:700 12px/1 var(--body);font-style:normal;color:var(--text);border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:999px;padding:6px 9px}
+  @media(max-width:760px){.new47{grid-template-columns:minmax(0,1fr)}}
   .plan ul{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:7px;color:var(--dim);font-size:.9rem;line-height:1.45}
   .plan li{position:relative;padding-left:22px}
   .plan li::before{content:"✓";position:absolute;left:0;top:0;color:var(--pc);font-weight:700}
@@ -455,8 +476,8 @@
           </div>
         </div>
         <div class="cta-note">
-          <span data-en>Free to start · no account needed · <b>80 free tokens</b> every month</span>
-          <span data-zh>免費開始 · 唔使開戶口 · 每月<b>80個免費token</b></span>
+          <span data-en>Free to start · no account needed · <span class="nw"><b>80 free tokens</b> a month,</span> <span class="nw">more from short ads</span></span>
+          <span data-zh>免費開始 · 唔使開戶口 · 每月<b>80個免費token</b>，<span class="nw">睇短廣告再賺</span></span>
         </div>
       </div>
 
@@ -959,10 +980,35 @@
       <div class="sec-head reveal">
         <h2 class="sec-title"><span data-en>Simple plans, honest free tier</span><span data-zh>收費簡單，免費都好用</span></h2>
         <p class="sec-sub">
-          <span data-en>Every plan unlocks the same app — plans differ in monthly ⚡ tokens and solution depth. Prices are what the App Store charges in Hong Kong.</span>
-          <span data-zh>所有計劃都係同一個App — 分別在於每月⚡token數量同解答深度。價錢即係香港App Store收費。</span>
+          <span data-en>Every plan unlocks the same app — plans differ in monthly ⚡ tokens and solution depth. The free plan shows ads; every paid plan is ad-free. Prices are what the App Store charges in Hong Kong.</span>
+          <span data-zh>所有計劃都係同一個App — 分別在於每月⚡token數量同解答深度。免費版有廣告，所有付費計劃都冇廣告。價錢即係香港App Store收費。</span>
         </p>
       </div>
+      <!-- 4.7: earn tokens with short ads; every paid plan ad-free (goes live with 4.7) -->
+      <div class="new47 reveal">
+        <div class="n47 earn">
+          <div class="n47-kicker"><span data-en>New in 4.7</span><span data-zh>4.7新功能</span></div>
+          <h3><span data-en>Earn free tokens</span><span data-zh>免費賺token</span></h3>
+          <div class="n47-big"><b>+10⚡</b><span data-en>for each short ad</span><span data-zh>每段短廣告</span></div>
+          <p>
+            <span data-en>On a free account, watch a short ad when you run out of tokens, or tap Earn ⚡ on Home — up to 10 ads a day. Ad tokens are used first and expire at midnight, Hong Kong time.</span>
+            <span data-zh>免費戶口token用完嗰陣，或者撳主頁嘅「賺取」⚡，睇一段短廣告就有+10個token，每日最多10段。廣告token會優先使用，香港時間午夜就失效。</span>
+          </p>
+        </div>
+        <div class="n47 adfree">
+          <div class="n47-kicker"><span data-en>Every paid plan</span><span data-zh>所有付費計劃</span></div>
+          <h3><span data-en>No ads at all</span><span data-zh>完全冇廣告</span></h3>
+          <div class="n47-noad">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="5"/><path d="M17 29l3.5-10 3.5 10M18.3 25.5h4.4M28 19v10h2.4a3.6 3.6 0 0 0 3.6-3.6v-2.8a3.6 3.6 0 0 0-3.6-3.6z"/><path d="M6 42L42 6"/></svg>
+            <span><i>Plus</i><i>Pro</i><i>Max 5×</i><i>Max 20×</i></span>
+          </div>
+          <p>
+            <span data-en>On the free plan, full-screen ads come only between tasks — never inside a quiz, a question or a lab. On a free account, <span class="nw">“Go ad-free”</span> in Setting shows the plans.</span>
+            <span data-zh>免費版嘅全螢幕廣告只會喺兩件事之間出現，唔會喺測驗、題目或者實驗室入面彈出。免費戶口喺「設定」撳「告別廣告」就睇到各個計劃。</span>
+          </p>
+        </div>
+      </div>
+
       <div class="bill-toggle reveal">
         <div class="seg" role="group" aria-label="Billing period">
           <button type="button" id="bill-m" class="on"><span data-en>Monthly</span><span data-zh>月費</span></button>
@@ -972,66 +1018,77 @@
       <div class="plan-grid reveal">
         <div class="plan" style="--pc:#34C759">
           <div class="p-name">Free</div>
+          <div class="p-tag"><span data-en>Free to start, with ads</span><span data-zh>免費開始，有廣告</span></div>
           <div class="p-price">HK$0</div>
           <div class="p-tokens">⚡ 80 / <span data-en>month</span><span data-zh>月</span></div>
           <ul>
-            <li><span data-en>Guest mode — try before you even sign up</span><span data-zh>訪客模式 — 唔使開戶口都試到</span></li>
+            <li><span data-en><span class="nw">+10 ⚡</span> for each short ad, up to 10 a day (used first, gone at Hong Kong midnight)</span><span data-zh>每段短廣告<span class="nw">+10個⚡</span>，每日最多10段（優先使用，香港時間午夜失效）</span></li>
             <li><span data-en>80 ⚡ tokens every month for practice</span><span data-zh>每月80個⚡token做練習</span></li>
             <li><span data-en>Daily Plan — one free quiz a day, made for you</span><span data-zh>每日計劃 — 每日一份為你而設嘅免費測驗</span></li>
-            <li><span data-en>Exam Calculator — works like the real thing</span><span data-zh>考試計算機 — 按鍵同顯示都同真機一樣</span></li>
             <li><span data-en>2 free timed Mock Exams to try — no tokens</span><span data-zh>免費試做2份計時Mock卷 — 唔使token</span></li>
-            <li><span data-en>HKDSE Cutoff — 15 subjects, no login needed</span><span data-zh>HKDSE分數線 — 15科，唔使login</span></li>
-            <li><span data-en>Past-paper solutions &amp; complete revision notes</span><span data-zh>歷屆試題詳解同全課題溫習筆記</span></li>
+            <li><span data-en>Exam Calculator — works like the real thing</span><span data-zh>考試計算機 — 按鍵同顯示都同真機一樣</span></li>
+            <li><span data-en>Revision notes &amp; past-paper solutions</span><span data-zh>溫習筆記同歷屆試題詳解</span></li>
+            <li><span data-en>Revision Timetable, JUPAS Calculator &amp; HKDSE Cutoff</span><span data-zh>溫習時間表、聯招計分器同HKDSE分數線</span></li>
+            <li><span data-en>4 Visual Math Lab topics to explore</span><span data-zh>4個數學動態實驗室課題任你玩</span></li>
             <li><span data-en>Quiz records &amp; saved questions</span><span data-zh>試後紀錄同收藏題目</span></li>
-            <li><span data-en>JUPAS Calculator — your score &amp; 20-choice plan</span><span data-zh>聯招計分器 — 計分同排20個志願</span></li>
+            <li><span data-en>Guest mode — try before you even sign up</span><span data-zh>訪客模式 — 唔使開戶口都試到</span></li>
           </ul>
         </div>
         <div class="plan" style="--pc:#63E6BE">
           <div class="p-name">Plus</div>
+          <div class="p-tag"><span data-en>For steady weekly practice</span><span data-zh>每星期穩定操練</span></div>
           <div class="p-price"><span class="bill-m">HK$38<span class="per"> / <span data-en>month</span><span data-zh>月</span></span></span><span class="bill-y">HK$358<span class="per"> / <span data-en>year</span><span data-zh>年</span></span></span></div>
           <div class="p-permo bill-y">≈ HK$29.8 / <span data-en>month</span><span data-zh>月</span></div>
           <div class="p-tokens">⚡ 500 / <span data-en>month</span><span data-zh>月</span></div>
           <ul>
+            <li><span data-en>No ads</span><span data-zh>無廣告</span></li>
+            <li><span data-en>About 10 practice tests a month</span><span data-zh>每月約10次練習測驗</span></li>
+            <li><span data-en>Up to 50 Long Questions a session (20 on Free)</span><span data-zh>長題目每次最多50題（免費版20題）</span></li>
+            <li><span data-en>Source code of the Plus / Pro calculator programs, with the demo</span><span data-zh>Plus / Pro計數機Program嘅程式碼同示範</span></li>
             <li><span data-en>Everything in Free</span><span data-zh>Free全部功能</span></li>
-            <li><span data-en>Full Long Question bank with marking-scheme solutions</span><span data-zh>全長題目題庫連marking scheme解答</span></li>
-            <li><span data-en>MCQ practice quizzes with instant marking</span><span data-zh>MCQ練習即做即批</span></li>
-            <li><span data-en>Per-topic exam analysis &amp; weakest-topic drills</span><span data-zh>逐課題成績分析同弱項特訓</span></li>
-            <li><span data-en>Calculator programs (Plus / Pro)</span><span data-zh>計數機Program（Plus / Pro）</span></li>
           </ul>
         </div>
         <div class="plan popular" style="--pc:#1A9FBE">
           <div class="pop-badge"><span data-en>Most popular</span><span data-zh>最多人揀</span></div>
           <div class="p-name">Pro</div>
+          <div class="p-tag"><span data-en>Practise every day</span><span data-zh>日日都操練</span></div>
           <div class="p-price"><span class="bill-m">HK$78<span class="per"> / <span data-en>month</span><span data-zh>月</span></span></span><span class="bill-y">HK$748<span class="per"> / <span data-en>year</span><span data-zh>年</span></span></span></div>
           <div class="p-permo bill-y">≈ HK$62.3 / <span data-en>month</span><span data-zh>月</span></div>
           <div class="p-tokens">⚡ 1,500 / <span data-en>month</span><span data-zh>月</span></div>
           <ul>
+            <li><span data-en>No ads</span><span data-zh>無廣告</span></li>
+            <li><span data-en>3× Plus's tokens — about one practice test a day</span><span data-zh>Plus嘅3倍token — 大約日日一次練習測驗</span></li>
             <li><span data-en>Everything in Plus</span><span data-zh>Plus全部功能</span></li>
-            <li><span data-en>3× the tokens — enough for daily practice</span><span data-zh>3倍token — 日日操都夠用</span></li>
           </ul>
         </div>
         <div class="plan" style="--pc:#AF7AFF">
           <div class="p-name">Max 5×</div>
+          <div class="p-tag"><span data-en>Serious exam preparation</span><span data-zh>認真備戰DSE</span></div>
           <div class="p-price"><span class="bill-m">HK$128<span class="per"> / <span data-en>month</span><span data-zh>月</span></span></span><span class="bill-y">HK$1,228<span class="per"> / <span data-en>year</span><span data-zh>年</span></span></span></div>
           <div class="p-permo bill-y">≈ HK$102.3 / <span data-en>month</span><span data-zh>月</span></div>
           <div class="p-tokens">⚡ 7,500 / <span data-en>month</span><span data-zh>月</span></div>
           <ul>
-            <li><span data-en>Everything in Pro</span><span data-zh>Pro全部功能</span></li>
+            <li><span data-en>No ads</span><span data-zh>無廣告</span></li>
+            <li><span data-en>5× Pro's tokens — about 5 practice tests a day</span><span data-zh>Pro嘅5倍token — 每日約5次練習測驗</span></li>
             <li><span data-en>S1–S6 mock exams on the real Paper 2 blueprint</span><span data-zh>S1–S6跟真卷藍圖嘅Mock卷</span></li>
             <li><span data-en>Advanced solutions — faster methods, calculator workflows and 5** exam skills</span><span data-zh>進階解法 — 更快方法、計數機步驟同5**應試技巧</span></li>
             <li><span data-en>Typical Questions &amp; Skills — all 19 chapters</span><span data-zh>題型攻略 — 全19章</span></li>
-            <li><span data-en>Max calculator programs</span><span data-zh>Max計數機Program</span></li>
+            <li><span data-en>Visual Math Lab — every topic, fully interactive</span><span data-zh>數學動態實驗室 — 全部課題任你玩</span></li>
+            <li><span data-en>Source code of every calculator program, Max ones included</span><span data-zh>全部計數機Program嘅程式碼，包括Max專屬</span></li>
+            <li><span data-en>Everything in Pro</span><span data-zh>Pro全部功能</span></li>
           </ul>
         </div>
         <div class="plan" style="--pc:#7B7BF5">
           <div class="p-name">Max 20×</div>
+          <div class="p-tag"><span data-en>Tutor-level intensity</span><span data-zh>導師級強度</span></div>
           <div class="p-price"><span class="bill-m">HK$268<span class="per"> / <span data-en>month</span><span data-zh>月</span></span></span><span class="bill-y">HK$2,588<span class="per"> / <span data-en>year</span><span data-zh>年</span></span></span></div>
           <div class="p-permo bill-y">≈ HK$215.7 / <span data-en>month</span><span data-zh>月</span></div>
           <div class="p-tokens">⚡ 30,000 / <span data-en>month</span><span data-zh>月</span></div>
           <ul>
+            <li><span data-en>No ads</span><span data-zh>無廣告</span></li>
+            <li><span data-en>20× Pro's tokens — practise without counting</span><span data-zh>Pro嘅20倍token — 操到唔使數住用</span></li>
+            <li><span data-en>Built for mock season and the final sprint</span><span data-zh>為Mock季同考前衝刺而設</span></li>
             <li><span data-en>Everything in Max 5×</span><span data-zh>Max 5×全部功能</span></li>
-            <li><span data-en>4× the tokens — practice without counting</span><span data-zh>4倍token — 操到唔使數住用</span></li>
-            <li><span data-en>Built for the final sprint to the exam</span><span data-zh>為考前衝刺而設</span></li>
           </ul>
         </div>
       </div>
@@ -1084,8 +1141,8 @@
         <details>
           <summary><span data-en>Is it really free to start?</span><span data-zh>真係免費開始？</span></summary>
           <div class="a">
-            <span data-en>Yes. Guest mode lets you browse and try the app with no account at all — including four full Visual Math Lab topics and every programme in the JUPAS Calculator — and the HKDSE Cutoff tool needs no login. A free account adds your daily plan, the Exam Calculator, past-paper solutions, revision notes, the Revision Timetable, your JUPAS score and 20-choice plan, and 80 ⚡ tokens every month for practice sessions.</span>
-            <span data-zh>係。訪客模式唔使開戶口都可以試用 — 連四個數學動態實驗室同聯招計分器全部課程都睇得晒 — 分數線工具更加完全唔使login。開個免費戶口就再有每日計劃、考試計算機、歷屆詳解、溫習筆記、溫習時間表、你嘅聯招分數同20個志願，同每月80個⚡token做練習。</span>
+            <span data-en>Yes. Guest mode lets you browse and try the app with no account at all — including four full Visual Math Lab topics and every programme in the JUPAS Calculator — and the HKDSE Cutoff tool needs no login. A free account adds your daily plan, the Exam Calculator, past-paper solutions, revision notes, the Revision Timetable, your JUPAS score and 20-choice plan, and 80 ⚡ tokens every month for practice sessions. The free plan shows ads, and a free account can watch a short ad for extra tokens; every paid plan is ad-free.</span>
+            <span data-zh>係。訪客模式唔使開戶口都可以試用 — 連四個數學動態實驗室同聯招計分器全部課程都睇得晒 — 分數線工具更加完全唔使login。開個免費戶口就再有每日計劃、考試計算機、歷屆詳解、溫習筆記、溫習時間表、你嘅聯招分數同20個志願，同每月80個⚡token做練習。免費版有廣告，免費戶口仲可以睇短廣告賺多啲token；所有付費計劃都冇廣告。</span>
           </div>
         </details>
         <details>
@@ -1112,15 +1169,43 @@
         <details>
           <summary><span data-en>What are ⚡ tokens?</span><span data-zh>⚡Token係咩？</span></summary>
           <div class="a">
-            <span data-en>Starting a practice session or mock exam costs tokens — the cost is always shown before you start, and every account's first 2 mock exams are free. Your balance refills every month by plan (Free 80 · Plus 500 · Pro 1,500 · Max 5× 7,500 · Max 20× 30,000), and top-up packs are available in-app if you run out.</span>
-            <span data-zh>開始一次練習或者Mock卷會用token — 開始前一定會顯示需要幾多；每個帳戶頭2份Mock卷免費。每月按計劃自動補滿（Free 80 · Plus 500 · Pro 1,500 · Max 5× 7,500 · Max 20× 30,000），唔夠用仲可以喺App內加購。</span>
+            <span data-en>Starting a practice session or mock exam costs tokens — the cost is always shown before you start, and every account's first 2 mock exams are free. Your balance refills every month by plan (Free 80 · Plus 500 · Pro 1,500 · Max 5× 7,500 · Max 20× 30,000), and top-up packs are available in-app if you run out. A free account can also earn ad tokens by watching short ads, and they are used first.</span>
+            <span data-zh>開始一次練習或者Mock卷會用token — 開始前一定會顯示需要幾多；每個帳戶頭2份Mock卷免費。每月按計劃自動補滿（Free 80 · Plus 500 · Pro 1,500 · Max 5× 7,500 · Max 20× 30,000），唔夠用仲可以喺App內加購。免費戶口仲可以睇短廣告賺廣告token，會優先使用。</span>
+          </div>
+        </details>
+        <details>
+          <summary><span data-en>Why does the free plan show ads?</span><span data-zh>點解免費版有廣告？</span></summary>
+          <div class="a">
+            <span data-en>Ads pay for the free plan, so it can stay free. Free accounts and guests see ads; every paid plan is ad-free. Full-screen ads come only between tasks — for example just before a quiz score appears, or when you leave a note chapter or a lab — never inside a quiz, a question or a lab.</span>
+            <span data-zh>廣告支持免費版，免費版先可以一直免費。免費戶口同訪客會見到廣告；所有付費計劃都冇廣告。全螢幕廣告只會喺兩件事之間出現 — 例如測驗分數出嚟之前，或者離開筆記章節、實驗室嗰陣 — 唔會喺測驗、題目或者實驗室入面彈出。</span>
+          </div>
+        </details>
+        <details>
+          <summary><span data-en>How do ad tokens work?</span><span data-zh>廣告token點運作？</span></summary>
+          <div class="a">
+            <span data-en>On a free account, watch a short ad for +10 ⚡ tokens, up to 10 ads a day — when you run out of tokens, or with Earn ⚡ on Home. Ad tokens are used before your monthly tokens and any top-up, and whatever is left expires at midnight, Hong Kong time. The tokens arrive once our server has confirmed the ad with Google. Guests sign up first to earn them.</span>
+            <span data-zh>免費戶口睇一段短廣告就有+10個⚡token，每日最多10段 — token用完嗰陣，或者撳主頁嘅「賺取」⚡。廣告token會比每月token同加購token優先使用，用剩嘅喺香港時間午夜失效。我哋嘅伺服器同Google確認咗段廣告之後，token就會入帳。訪客要先開戶口先可以賺。</span>
+          </div>
+        </details>
+        <details>
+          <summary><span data-en>How do I remove the ads?</span><span data-zh>點樣可以冇廣告？</span></summary>
+          <div class="a">
+            <span data-en>Subscribe to any plan — Plus, Pro, Max 5× or Max 20×. Every paid plan is ad-free, on any iPhone or iPad where you sign in with your number. On a free account, <span class="nw">“Go ad-free”</span> in Setting shows the plans.</span>
+            <span data-zh>訂閱任何一個計劃 — Plus、Pro、Max 5×或者Max 20×。所有付費計劃都冇廣告，用你個號碼喺任何iPhone或iPad登入都一樣。免費戶口喺「設定」撳「告別廣告」就睇到各個計劃。</span>
+          </div>
+        </details>
+        <details>
+          <summary><span data-en>Can I change my ad choices?</span><span data-zh>可唔可以更改廣告選擇？</span></summary>
+          <div class="a">
+            <span data-en>Yes. Where Google’s consent rules apply — the EEA, the UK and Switzerland — Google’s consent form appears before any ad is requested, and Setting has a “Privacy choices” row where you can change your answer at any time; elsewhere, including Hong Kong, neither appears. Separately, a signed-in free account is asked once, after its first finished quiz, whether ads may use the device’s advertising identifier; you can change that answer at any time on your iPhone or iPad in Settings ▸ Privacy &amp; Security ▸ Tracking.</span>
+            <span data-zh>可以。喺Google同意規則適用嘅地方 — 歐洲經濟區、英國同瑞士 — 要求任何廣告之前會先出Google嘅同意表格，「設定」入面仲有「私隱選項」，隨時可以改；其他地方（包括香港）兩樣都唔會出現。另外，已登入嘅免費戶口完成第一份測驗之後，會被問一次廣告可唔可以用部機嘅廣告識別碼；你隨時可以喺iPhone或iPad嘅「設定」▸「私隱與保安」▸「追蹤」更改。</span>
           </div>
         </details>
         <details>
           <summary><span data-en>What's the difference between Plus, Pro and Max?</span><span data-zh>Plus、Pro、Max有咩分別？</span></summary>
           <div class="a">
-            <span data-en>Plus and Pro unlock the same features — question banks with marking-scheme solutions and the Plus/Pro calculator programs — Pro simply gives 3× the monthly tokens. Max plans add advanced 5** solutions, the 19-chapter Typical Questions &amp; Skills notes and the Max calculator programs; Max 5× and Max 20× differ only in token volume.</span>
-            <span data-zh>Plus同Pro功能一樣 — 題庫連marking scheme解答、Plus/Pro計數機Program — Pro只係每月多3倍token。Max計劃再加5**進階解法、全19章題型攻略筆記同Max計數機Program；Max 5×同Max 20×只係token數量唔同。</span>
+            <span data-en>Every paid plan is ad-free. Plus and Pro unlock the same features — up to 50 Long Questions a session (20 on a free account) and the source code of the Plus / Pro calculator programs — and Pro has 3× Plus's monthly tokens. Max plans add Mock Exams (every account gets 2 free), advanced solutions, the 19-chapter Typical Questions &amp; Skills notes, every Visual Math Lab topic and the source code of every calculator program; Max 5× and Max 20× differ only in tokens.</span>
+            <span data-zh>所有付費計劃都冇廣告。Plus同Pro功能一樣 — 長題目每次最多50題（免費戶口20題）同Plus / Pro計數機Program嘅程式碼 — Pro每月token係Plus嘅3倍。Max計劃再加Mock卷（每個帳戶都有2份免費）、進階解法、全19章題型攻略筆記、全部數學動態實驗室課題同全部計數機Program嘅程式碼；Max 5×同Max 20×只係token數量唔同。</span>
           </div>
         </details>
         <details>
