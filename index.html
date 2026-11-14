@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="zh-Hant" data-lang="zh">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1264,20 +1264,25 @@
 <script>
   // ---------- language ----------
   const htmlEl = document.documentElement;
+  // Chinese by default (owner, 2026-11-14): English only for ?lang=en or a visitor who tapped EN.
+  // A tap is kept under 'site_lang_choice'. The old 'site_lang' key was written on every visit
+  // (from the browser's language), so it is not read any more.
   function setLang(l){
     htmlEl.setAttribute('data-lang', l);
     htmlEl.setAttribute('lang', l === 'zh' ? 'zh-Hant' : 'en');
     document.getElementById('btn-en').classList.toggle('on', l === 'en');
     document.getElementById('btn-zh').classList.toggle('on', l === 'zh');
-    try { localStorage.setItem('site_lang', l); } catch(e){}
   }
-  document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
-  document.getElementById('btn-zh').addEventListener('click', () => setLang('zh'));
+  function chooseLang(l){
+    setLang(l);
+    try { localStorage.setItem('site_lang_choice', l); } catch(e){}
+  }
+  document.getElementById('btn-en').addEventListener('click', () => chooseLang('en'));
+  document.getElementById('btn-zh').addEventListener('click', () => chooseLang('zh'));
   const urlLang = new URLSearchParams(location.search).get('lang'); // ?lang=en / ?lang=zh deep links
-  let saved = null;
-  try { saved = localStorage.getItem('site_lang'); } catch(e){}
-  setLang(['en','zh'].includes(urlLang) ? urlLang
-        : saved || ((navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en'));
+  let chosen = null;
+  try { chosen = localStorage.getItem('site_lang_choice'); } catch(e){}
+  setLang(['en','zh'].includes(urlLang) ? urlLang : (chosen === 'en' ? 'en' : 'zh'));
 
   // ---------- countdown ----------
   // The published 2027 timetable (HKEAA Examination Circular No. 8, 2025/26): the written examinations
